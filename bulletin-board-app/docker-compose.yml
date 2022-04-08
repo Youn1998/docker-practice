@@ -1,0 +1,16 @@
+services:
+  board:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8080"
+    environment:
+      - LOG_LEVEL=DEBUG
+    volumes:
+      - ./:/usr/src/app
+    command: >
+      bash -c "npm install && npm start"
+    working_dir: /usr/src/app
+    tty: true
+    stdin_open: true
